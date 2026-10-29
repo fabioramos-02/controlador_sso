@@ -13,7 +13,8 @@ export default function Inicio() {
         <li>Checar sessão (servidor)</li>
         <li>Sair (navegador)</li>
       </ol>
-      <a className="botao" href="/login">Entrar com gov.br</a>
+      <a className="botao" href="/login">Entrar com gov.br</a>{" "}
+      <a href="/roteiro">Ver o roteiro de cada passo</a>
     </>
   );
 }

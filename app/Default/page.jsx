@@ -12,6 +12,7 @@ function Passo({ n, titulo, requisicao, resposta, ok = true }) {
       <pre>{JSON.stringify(requisicao, null, 2)}</pre>
       <b>Resposta</b>
       <pre>{JSON.stringify(resposta, null, 2)}</pre>
+      <a href={`/roteiro#passo-${n}`} target="_blank">Dúvida sobre este passo?</a>
     </section>
   );
 }
@@ -42,7 +43,8 @@ export default async function Callback({ searchParams }) {
           <Passo n={4} titulo="Checar sessão" requisicao={c.requisicao} resposta={{ status: c.status, dados: c.dados }} ok={c.ok} />
           <section>
             <h2>Passo 5. Sair</h2>
-            <a className="botao" href="/sair">Sair</a>
+            <a className="botao" href="/sair">Sair</a>{" "}
+            <a href="/roteiro#passo-5" target="_blank">Dúvida sobre este passo?</a>
           </section>
         </>
       )}

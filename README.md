@@ -76,6 +76,7 @@ Abra http://localhost:64178 e clique em **Entrar com gov.br**. A porta é 64178 
 | 1. Login | `app/login/route.js` |
 | 2 a 4. Callback: troca o code e busca os dados | `app/Default/page.jsx` |
 | 5. Sair | `app/sair/route.js` |
+| Dúvidas de cada passo | `ROTEIRO.md`, aberto em http://localhost:64178/roteiro |
 
 O callback é um Server Component: as chamadas dos passos 2 a 4 rodam no servidor, e o `client_secret` nunca chega ao navegador.
 

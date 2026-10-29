@@ -1,6 +1,8 @@
-body { font: 16px/1.5 system-ui, "Segoe UI", sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #1b1b1b; }
+body { font: 16px/1.5 system-ui, "Segoe UI", sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #1b1b1b; background: #fff; }
 h1 { color: #244061; }
 section { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
 pre { background: #f4f4f4; padding: .75rem; overflow: auto; font-size: 13px; }
 .ok { color: #137333; } .erro { color: #b3261e; }
 .botao { display: inline-block; background: #1351b4; color: #fff; padding: .6rem 1.2rem; border-radius: 20px; text-decoration: none; }
+table { border-collapse: collapse; } th, td { border: 1px solid #ccc; padding: .3rem .6rem; text-align: left; }
+h2 { scroll-margin-top: 1rem; }
