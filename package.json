@@ -1,0 +1,14 @@
+{
+  "name": "controlador-sso",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 64178",
+    "build": "next build",
+    "start": "next start -p 64178"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}

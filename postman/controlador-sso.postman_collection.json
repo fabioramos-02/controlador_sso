@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "Controlador · SSO gov.br (roteiro)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Login gov.br pelo SSO do Controlador. Ver README da PoC 05."
+  },
+  "item": [
+    {
+      "name": "01 Login (abrir no navegador)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{control_url}}/sso/cidadao?client_id={{client_id}}",
+        "description": "Abra no navegador, faça o login e copie o code do callback para a variável code."
+      }
+    },
+    {
+      "name": "02 Validar cidadão",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{control_url}}/api/validar_cidadao/",
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"redirect_uri\": \"{{redirect_uri}}\",\n  \"code\": \"{{code}}\",\n  \"client_id\": \"{{client_id}}\",\n  \"client_secret\": \"{{client_secret}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "let b; try { b = pm.response.json(); } catch (e) { b = pm.response.text(); }",
+              "const t = typeof b === 'string' ? b : (b.access_token || b.token || b.jwt);",
+              "if (t) pm.environment.set('access_token', t);",
+              "pm.test('token recebido', () => pm.expect(t).to.be.ok);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 Dados do cidadão",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{control_url}}/api/cidadaos/pro/",
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "04 Checar sessão",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{control_url}}/api/checar/",
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"access_token\": \"{{access_token}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 Sair (abrir no navegador)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{control_url}}/sso/sair?client_id={{client_id}}",
+        "description": ""
+      }
+    }
+  ]
+}
